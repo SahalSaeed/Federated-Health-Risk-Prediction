@@ -84,7 +84,7 @@ jobs:
   train:
     name: Train Federated Model
     runs-on: ubuntu-latest
-    # if: github.event_name == 'workflow_dispatch' || github.event.schedule
+    # No job-level `if` so this job runs for workflow triggers defined at top (push, pull_request, etc.)
     
     steps:
     - name: Checkout code
@@ -105,7 +105,7 @@ jobs:
         poetry run python scripts/run_federated_training.py
         
     - name: Upload model artifacts
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: trained-model
         path: models/federated_global_model.pth
