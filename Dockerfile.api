@@ -20,12 +20,17 @@ RUN pip install poetry==1.7.0
 # Copy dependency files
 COPY pyproject.toml poetry.lock README.md ./
 
-# Install dependencies
-RUN poetry config virtualenvs.create false \
-    && poetry install --no-dev --no-interaction
-
-# Copy application code
+# Copy source code (needed for package installation)
 COPY src/ ./src/
+
+# Install dependencies (this will also install the package)
+RUN poetry config virtualenvs.create false \
+    && poetry install --no-dev --no-interaction --no-root
+
+# Install the package itself
+RUN poetry install --no-dev --no-interaction --only-root
+
+# Copy models
 COPY models/ ./models/
 
 # Create non-root user
