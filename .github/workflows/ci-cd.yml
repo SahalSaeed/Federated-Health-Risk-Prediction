@@ -102,7 +102,7 @@ jobs:
         
     - name: Run training
       run: |
-        poetry run python scripts/run_federated_training.py
+        poetry run python scripts/run_federated_experiment.py
         
     - name: Upload model artifacts
       uses: actions/upload-artifact@v4
