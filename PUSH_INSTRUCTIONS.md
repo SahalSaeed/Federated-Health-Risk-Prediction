@@ -32,7 +32,7 @@ git push origin main
 
 ## What Happens Next
 
-### Automatic (on push):
+### Automatic (on every push):
 1. **Test Job** runs (~3-5 min)
    - Creates mock data
    - Runs linting
@@ -43,15 +43,13 @@ git push origin main
    - Builds Docker image
    - Uses cache for speed
 
-3. **Deploy Job** runs (~1 min)
-   - Placeholder (configure if needed)
-
-### Manual (when you trigger):
-4. **Train Job** (optional, ~10 min)
-   - Go to Actions → Run workflow
+3. **Train Job** runs (~10 min)
    - Creates mock data
-   - Trains model
-   - Uploads artifacts
+   - Trains federated model
+   - Uploads model artifacts
+
+4. **Deploy Job** runs (~1 min)
+   - Placeholder (configure if needed)
 
 ## Expected Results
 
@@ -61,8 +59,8 @@ After pushing, go to:
 You should see:
 - ✅ Test & Lint job: **PASSING**
 - ✅ Build job: **PASSING**
+- ✅ Train job: **PASSING** (takes ~10 min)
 - ✅ Deploy job: **PASSING**
-- ⏸️ Train job: **SKIPPED** (manual only)
 
 ## If Something Fails
 

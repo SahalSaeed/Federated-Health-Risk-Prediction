@@ -88,12 +88,11 @@ jobs:
         cache-from: type=gha
         cache-to: type=gha,mode=max
 
-  # Model Training (manual trigger only - requires data)
+  # Model Training (runs on every push)
   train:
     name: Train Federated Model
     runs-on: ubuntu-latest
-    # Only run on manual workflow dispatch or schedule (not on every push)
-    if: github.event_name == 'workflow_dispatch' || github.event_name == 'schedule'
+    needs: test
     
     steps:
     - name: Checkout code

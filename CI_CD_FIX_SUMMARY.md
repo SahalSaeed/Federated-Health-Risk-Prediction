@@ -159,9 +159,9 @@ git push origin main
 
 | Event | Test | Build | Train | Deploy |
 |-------|------|-------|-------|--------|
-| Push to main | ✅ | ✅ | ❌ | ✅ |
-| Push to develop | ✅ | ✅ | ❌ | ❌ |
-| Pull request | ✅ | ❌ | ❌ | ❌ |
+| Push to main | ✅ | ✅ | ✅ | ✅ |
+| Push to develop | ✅ | ✅ | ✅ | ❌ |
+| Pull request | ✅ | ❌ | ✅ | ❌ |
 | Manual trigger | ✅ | ✅ | ✅ | ❌ |
 | Weekly schedule | ✅ | ✅ | ✅ | ❌ |
 

@@ -34,14 +34,14 @@ This project uses GitHub Actions for continuous integration and deployment. The 
 **Status:** ✅ Should pass
 
 ### 3. Train Job
-**Runs on:** Manual trigger or weekly schedule
+**Runs on:** Every push (after tests pass)
 
 **What it does:**
 - Creates mock data
-- Trains federated model
+- Trains federated model for 10 rounds
 - Uploads model artifacts
 
-**Status:** ✅ Only runs when manually triggered
+**Status:** ✅ Runs automatically on every push
 
 ### 4. Deploy Job
 **Runs on:** Push to main branch
