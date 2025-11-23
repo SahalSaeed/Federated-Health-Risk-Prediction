@@ -1,0 +1,53 @@
+groups:
+  - name: health_risk_alerts
+    interval: 30s
+    rules:
+      # API Health
+      - alert: APIDown
+        expr: up{job="health-risk-api"} == 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Health Risk API is down"
+          description: "The API has been down for more than 1 minute"
+
+      # High Error Rate
+      - alert: HighErrorRate
+        expr: rate(http_requests_total{status=~"5.."}[5m]) > 0.05
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High error rate detected"
+          description: "Error rate is above 5% for 5 minutes"
+
+      # High Response Time
+      - alert: HighResponseTime
+        expr: histogram_quantile(0.95, rate(http_request_duration_seconds_bucket[5m])) > 1
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High response time"
+          description: "95th percentile response time is above 1 second"
+
+      # Model Drift Detected
+      - alert: ModelDriftDetected
+        expr: model_drift_detected == 1
+        for: 1m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Data drift detected"
+          description: "Model drift has been detected - consider retraining"
+
+      # High Memory Usage
+      - alert: HighMemoryUsage
+        expr: process_resident_memory_bytes / 1024 / 1024 > 500
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High memory usage"
+          description: "Memory usage is above 500MB"

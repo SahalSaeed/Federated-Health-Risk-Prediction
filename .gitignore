@@ -1,0 +1,42 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+.venv/
+.uv/
+.env
+.env.*
+*.sqlite
+
+# Editors & OS
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+
+# Data & artifacts
+data/
+models/**/*.pt
+models/**/*.pth
+models/**/*.onnx
+models/**/*.bin
+artifacts/
+mlruns/
+logs/
+checkpoints/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Docker/K8s
+*.log
+.envrc
+
+# Prefect/Kubeflow
+*.yaml.backup
+.pytest_cache/
+.ruff_cache/
