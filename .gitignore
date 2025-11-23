@@ -19,7 +19,7 @@ __pycache__/
 Thumbs.db
 
 # Data & artifacts
-data/
+/data/
 models/**/*.pt
 models/**/*.pth
 models/**/*.onnx
