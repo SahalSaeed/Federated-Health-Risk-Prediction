@@ -39,9 +39,13 @@ jobs:
         curl -sSL https://install.python-poetry.org | python3 -
         echo "$HOME/.local/bin" >> $GITHUB_PATH
         
-    - name: Install dependencies and package
+    - name: Install dependencies
       run: |
-        poetry install --with dev
+        poetry install --no-root
+        
+    - name: Install package
+      run: |
+        poetry run pip install -e .
         
     - name: Create mock data for tests
       run: |
@@ -107,9 +111,22 @@ jobs:
       run: |
         pip install poetry
         
-    - name: Install dependencies and package
+    - name: Install dependencies
       run: |
-        poetry install --no-interaction --no-ansi --with dev
+        poetry install --no-interaction --no-ansi --no-root
+        
+    - name: Install package
+      run: |
+        poetry run pip install -e .
+        
+    - name: Verify package installation
+      run: |
+        echo "Checking Python path..."
+        poetry run python -c "import sys; print('Python path:', sys.path)"
+        echo "Testing package import..."
+        poetry run python -c "import federated_health_risk; print('✓ Package installed successfully')"
+        echo "Testing module import..."
+        poetry run python -c "from federated_health_risk.data.federated_loader import prepare_federated_data; print('✓ Module import successful')"
         
     - name: Create mock data for CI
       run: |

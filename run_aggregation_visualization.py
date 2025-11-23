@@ -4,9 +4,6 @@ Run federated learning with weight aggregation visualization.
 This script demonstrates how federated averaging improves model performance
 by aggregating weights from multiple nodes after local training.
 """
-import sys
-sys.path.insert(0, 'src')
-
 import torch
 import torch.nn as nn
 from torch.optim import Adam
