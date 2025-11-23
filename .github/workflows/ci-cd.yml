@@ -84,7 +84,7 @@ jobs:
   train:
     name: Train Federated Model
     runs-on: ubuntu-latest
-    if: github.event_name == 'workflow_dispatch' || github.event.schedule
+    # if: github.event_name == 'workflow_dispatch' || github.event.schedule
     
     steps:
     - name: Checkout code
