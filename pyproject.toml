@@ -9,6 +9,7 @@ description = "End-to-end MLOps system for federated health risk prediction"
 authors = ["Sahal Saeed <sahal@example.com>"]
 readme = "README.md"
 license = "MIT"
+packages = [{include = "federated_health_risk", from = "src"}]
 
 [tool.poetry.dependencies]
 python = ">=3.10,<3.13"
